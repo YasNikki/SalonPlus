@@ -426,7 +426,7 @@ public class home_GUI extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         
-        
+        new guia_GUI().setVisible(true);
         
     }//GEN-LAST:event_jButton12ActionPerformed
 
