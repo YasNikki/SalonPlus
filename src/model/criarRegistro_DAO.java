@@ -66,8 +66,6 @@ public class criarRegistro_DAO {
             String hora = view.home_GUI.horario.getText();
             String type = view.home_GUI.tipoData.getSelectedItem().toString().toLowerCase();
             
-            int permissao = 0;
-            
             String SQL = "select * from reservas";
 
             Connection con = null;
@@ -76,34 +74,8 @@ public class criarRegistro_DAO {
             } catch (SQLException ex) {
                 Logger.getLogger(criarRegistro_DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            try{
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(SQL);
-
-                while(rs.next()){
-                    String reservadorTest = rs.getString("reservador");
-                    String dataTest = rs.getString("data");
-                    String salaTest = rs.getString("sala");
-                    String horaTest = rs.getString("horario");
-
-                    if (reservadorTest.equals(reservador) && dataTest.equals(data) && salaTest.equals(sala) && horaTest.equals(hora)){
-                        
-                        JOptionPane.showMessageDialog(null, "Já existe uma reserva igual.");
-                        
-                    }else{
-                        
-                        permissao = 1;
-                        
-                    }
-
-                }
-            }catch (Exception e){
-            }
             
-            if (permissao == 1){
-                
-                controller.Conexao_BD.carregaDriver();
+            controller.Conexao_BD.carregaDriver();
                 
                 try{
                     con = (Connection) DriverManager.getConnection(url, username, password);
@@ -137,15 +109,11 @@ public class criarRegistro_DAO {
                 view.home_GUI.data.setText("");
                 view.home_GUI.tempo.setText("");
                 view.home_GUI.horario.setText("");
-                
-            }
 
-            
-                
         }
         
     }
-
+    
     public static void baixarReserva(){
         
         try {
